@@ -20,7 +20,7 @@ const favicon = new URL('/favicon.svg', Astro.url);
 
     <title>{title}</title>
     <meta name="description" content={description} />
-    
+
     <meta property="og:title" content={title} />
     <meta property="og:image" content={ogImage} />
     <meta property="og:image:width" content="1200" />
@@ -31,5 +31,16 @@ const favicon = new URL('/favicon.svg', Astro.url);
 <body class="min-h-screen relative overflow-x-clip bg-[var(--bg)] text-[var(--text)]">
     <slot />
     <script src="../assets/scripts/main.js"></script>
+    {import.meta.env.PROD && (
+      <>
+        <!-- Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtm.js?id=GTM-PWH5LZZK"></script>
+        <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        </script>
+      </>
+    )}
 </body>
 </html>
