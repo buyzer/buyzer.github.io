@@ -1,0 +1,35 @@
+---
+import '../assets/styles/tailwind.css';
+import '../assets/styles/main.scss';
+
+interface Props { title?: string; description?: string; }
+const { 
+        title = 'Buyung Abadi | Senior WordPress Engineer & Ex-Tech Lead', 
+        description = 'Senior WordPress engineer and team lead with 10+ years of experience. Performance, WooCommerce, technical SEO. Open to remote roles (GMT+7).' 
+    } = Astro.props;
+
+const ogImage = new URL('/og-image.webp', Astro.url);
+const favicon = new URL('/favicon.svg', Astro.url);
+---
+<!doctype html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href={favicon} type="image/svg+xml" />
+
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    
+    <meta property="og:title" content={title} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:image" content={ogImage} />
+</head>
+<body class="min-h-screen relative overflow-x-clip bg-[var(--bg)] text-[var(--text)]">
+    <slot />
+    <script src="../assets/scripts/main.js"></script>
+</body>
+</html>
